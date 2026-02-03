@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>St. Maudlyns Tea Rota</title>
+    <link href="https://fonts.googleapis.com/css2?family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        body { background-color: #f4e4bc; color: #2c241b; font-family: 'Old Standard TT', serif; text-align: center; padding: 20px; }
+        
+        .portrait {
+            width: 100%; max-width: 400px;
+            border: 8px solid #2c241b; border-radius: 4px;
+            box-shadow: 10px 10px 0px rgba(0,0,0,0.2); margin-bottom: 20px;
+        }
+
+        h1 { font-size: 2.2em; margin-bottom: 10px; border-bottom: 2px solid #2c241b; display: inline-block; }
+        h2 { font-size: 1.5em; margin-top: 40px; color: #8b0000; text-decoration: underline; }
+
+        .schedule { margin: 20px auto; max-width: 400px; text-align: left; background: #fff; padding: 20px; border: 1px solid #2c241b; box-shadow: 5px 5px 0px rgba(0,0,0,0.1); }
+        .entry { border-bottom: 1px dashed #999; padding: 10px 0; display: flex; justify-content: space-between; }
+        .entry:last-child { border-bottom: none; }
+        .date { font-weight: bold; color: #8b0000; }
+        .name { font-style: italic; }
+
+        .survey-box { margin: 20px auto; max-width: 400px; text-align: left; }
+        .biscuit-option { 
+            background: #e8dcc5; border: 1px solid #2c241b; padding: 15px; margin-bottom: 15px; 
+            display: flex; justify-content: space-between; align-items: center; cursor: pointer;
+            transition: transform 0.1s;
+        }
+        .biscuit-option:active { transform: scale(0.98); background: #dccaa8; }
+        .biscuit-info { display: flex; flex-direction: column; }
+        .biscuit-name { font-weight: bold; font-size: 1.2em; }
+        .stars { color: #cc9900; margin-top: 5px; font-size: 1.1em; letter-spacing: 2px; }
+        .vote-count { color: #666; font-size: 0.8em; font-style: italic; margin-left: 5px; color: #2c241b; }
+        .vote-btn { 
+            background: #8b0000; color: #fff; border: none; padding: 8px 12px; 
+            font-family: 'Old Standard TT', serif; font-size: 0.9em; cursor: pointer; border-radius: 2px;
+        }
+
+        /* --- THE CAPTCHA MODAL --- */
+        #captcha-modal {
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.85); z-index: 100; justify-content: center; align-items: center;
+        }
+        .captcha-box {
+            background: #fff; padding: 20px; max-width: 350px; width: 90%;
+            border: 5px solid #8b0000; text-align: center; position: relative;
+        }
+        .captcha-header {
+            background: #8b0000; color: #fff; padding: 10px; font-weight: bold; margin: -20px -20px 15px -20px;
+        }
+        .captcha-instruction { margin-bottom: 15px; font-size: 1.1em; font-weight: bold; line-height: 1.4em; }
+        
+        .captcha-grid {
+            display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: repeat(3, 1fr);
+            width: 300px; height: 300px; margin: 0 auto;
+            background-size: cover; background-position: center; border: 2px solid #000;
+        }
+        .grid-cell {
+            border: 1px solid rgba(255,255,255,0.3); cursor: crosshair;
+            display: flex; justify-content: center; align-items: center;
+        }
+        .grid-cell:hover { background: rgba(255,255,255,0.1); }
+        .tick { font-size: 40px; color: #00ff00; display: none; text-shadow: 2px 2px 0 #000; }
+        .grid-cell.selected .tick { display: block; }
+
+        .note { margin-top: 30px; font-size: 0.9em; color: #555; font-style: italic; }
+        a { display: block; margin-top: 30px; color: #8b0000; text-decoration: none; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <img src="../images/vicar-tea.png" alt="The Vicar" class="portrait">
+
+    <h1>The Tea Rota</h1>
+    <p>Please ensure the urn is descaled. The Vicar is watching.</p>
+
+    <div class="schedule">
+        <div class="entry"><span class="date">Feb 4</span><span class="name">Mrs. Higgins</span></div>
+        <div class="entry"><span class="date">Feb 11</span><span class="name">Major Clapperton</span></div>
+        <div class="entry"><span class="date">Feb 18</span><span class="name">The Vicar (Expect burnt toast)</span></div>
+        <div class="entry"><span class="date">Feb 25</span><span class="name">Miss Pringle</span></div>
+    </div>
+
+    <h2>The Official Ratings</h2>
+    <p>Current standing based on the Vicar's palate.</p>
+
+    <div class="survey-box">
+        <div class="biscuit-option" onclick="startCaptcha('The Vicar approves of your lavish taste.', 'Hobnobs')">
+            <div class="biscuit-info">
+                <span class="biscuit-name">Chocolate Hobnobs</span>
+                <div class="stars">★★★★★ <span class="vote-count">(142 votes)</span></div>
+            </div>
+            <button class="vote-btn">Vote</button>
+        </div>
+
+        <div class="biscuit-option" onclick="startCaptcha('A safe, Anglican choice.', 'Digestives')">
+            <div class="biscuit-info">
+                <span class="biscuit-name">Digestives (Plain)</span>
+                <div class="stars">★★★★☆ <span class="vote-count">(89 votes)</span></div>
+            </div>
+            <button class="vote-btn">Vote</button>
+        </div>
+
+        <div class="biscuit-option" onclick="startCaptcha('Rich Tea? Really? They dunk like wet cardboard.', 'Rich Tea')">
+            <div class="biscuit-info">
+                <span class="biscuit-name">Rich Tea</span>
+                <div class="stars">★★☆☆☆ <span class="vote-count">(12 votes)</span></div>
+            </div>
+            <button class="vote-btn">Vote</button>
+        </div>
+
+        <div class="biscuit-option" onclick="startCaptcha('Custard Creams represent the crumbling of society.', 'Custard Creams')">
+            <div class="biscuit-info">
+                <span class="biscuit-name">Custard Creams</span>
+                <div class="stars">★☆☆☆☆ <span class="vote-count">(3 votes)</span></div>
+            </div>
+            <button class="vote-btn">Vote</button>
+        </div>
+    </div>
+
+    <p class="note">* Note: The Vicar retains veto power over all biscuit purchases.</p>
+    <a href="/">← Return to the Lychgate</a>
+
+    <div id="captcha-modal">
+        <div class="captcha-box">
+            <div class="captcha-header">SECURITY CHECK</div>
+            <p class="captcha-instruction" id="captcha-text">Select all squares...</p>
+            
+            <div class="captcha-grid" id="grid-container">
+                </div>
+            <p style="font-size:0.8em; margin-top:10px;">(Proof of Humanity Required)</p>
+        </div>
+    </div>
+
+    <script>
+        // --- SINNER DATABASE ---
+        const sinners = [
+            { 
+                file: "../images/soiler.jpg", 
+                instruction: "Select all squares that contain someone who shits themselves" 
+            },
+            { 
+                file: "../images/traitors.jpg", 
+                instruction: "Select all squares that contain traitors" 
+            }
+        ];
+
+        let pendingMessage = "";
+        let clicks = 0;
+
+        function startCaptcha(message, biscuit) {
+            pendingMessage = message;
+            clicks = 0;
+            
+            // 1. Pick a random sinner
+            const sinner = sinners[Math.floor(Math.random() * sinners.length)];
+            
+            // 2. Setup the Modal
+            document.getElementById('captcha-modal').style.display = 'flex';
+            document.getElementById('captcha-text').innerText = sinner.instruction;
+            
+            // 3. Setup the Grid Image
+            const grid = document.getElementById('grid-container');
+            grid.style.backgroundImage = "url('" + sinner.file + "')";
+            
+            // 4. Create the 9 cells
+            grid.innerHTML = ''; 
+            for(let i=0; i<9; i++) {
+                let cell = document.createElement('div');
+                cell.className = 'grid-cell';
+                cell.innerHTML = '<div class="tick">✔</div>';
+                cell.onclick = function() { toggleCell(this); };
+                grid.appendChild(cell);
+            }
+        }
+
+        function toggleCell(cell) {
+            if (!cell.classList.contains('selected')) {
+                cell.classList.add('selected');
+                clicks++;
+                
+                if (clicks === 9) {
+                    setTimeout(() => {
+                        alert(pendingMessage);
+                        document.getElementById('captcha-modal').style.display = 'none';
+                    }, 300); 
+                }
+            }
+        }
+    </script>
+</body>
+</html>
