@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>The Presidential Address | St. Maudlyns</title>
+    <link href="https://fonts.googleapis.com/css2?family=Old+Standard+TT:ital,wght@0,400;1,400&family=Mrs+Saint+Delafield&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #1a0f0d;
+            display: flex;
+            justify-content: center;
+            padding: 50px 20px;
+            margin: 0;
+        }
+
+        /* The Loose Sheet of Paper */
+        .paper-sheet {
+            background: #fdfaf0;
+            width: 100%;
+            max-width: 650px;
+            min-height: 800px;
+            padding: 60px;
+            box-shadow: 10px 10px 30px rgba(0,0,0,0.5), 
+                        inset 0 0 100px rgba(0,0,0,0.05);
+            position: relative;
+            transform: rotate(-1deg); /* Slightly askew for realism */
+            border: 1px solid #dcd9ce;
+        }
+
+        /* Paper Texture Overlay */
+        .paper-sheet::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: url('https://www.transparenttextures.com/patterns/cream-paper.png');
+            pointer-events: none;
+            opacity: 0.5;
+        }
+
+        header {
+            border-bottom: 2px double #2a1b18;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .handwritten {
+            font-family: 'Mrs Saint Delafield', cursive;
+            font-size: 2.5rem;
+            color: #2a1b18;
+            margin: 20px 0;
+        }
+
+        .typewritten {
+            font-family: 'Old Standard TT', serif;
+            color: #333;
+            line-height: 1.8;
+            text-align: justify;
+        }
+
+        /* The Audio Interaction Area */
+        .audio-container {
+            margin: 50px 0;
+            padding: 30px;
+            border: 1px dashed #ccc;
+            text-align: center;
+        }
+
+        .play-button {
+            background: #2a1b18;
+            color: #fdfaf0;
+            border: none;
+            padding: 15px 30px;
+            font-family: 'Old Standard TT', serif;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .play-button:hover { background: #4a3530; }
+
+        .footer-note {
+            margin-top: 60px;
+            font-size: 0.8rem;
+            font-style: italic;
+            border-top: 1px solid #eee;
+            padding-top: 20px;
+        }
+
+        .back-link {
+            position: absolute;
+            top: 20px;
+            right: -100px;
+            color: #d4ccb8;
+            text-decoration: none;
+            transform: rotate(1deg);
+        }
+
+        @media (max-width: 900px) { .back-link { position: static; display: block; margin-bottom: 20px; } }
+    </style>
+</head>
+<body>
+
+    <a href="/sermons/" class="back-link">← Back to Register</a>
+
+    <article class="paper-sheet">
+        <header>
+            <p style="font-family: 'Old Standard TT'; font-size: 0.7rem; text-transform: uppercase;">Parish of St. Maudlyns-le-Wold</p>
+            <div class="handwritten">The Presidential Address</div>
+        </header>
+
+        <div class="typewritten">
+            <p><strong>Date:</strong> 2nd February, 2026</p>
+            <p><strong>Subject:</strong> A Call for Structural Integrity (and less beans in the Vestry).</p>
+            
+            <p>It has come to my attention—largely through the medium of several rather pointed letters from the Altar Guild—that the atmosphere during the Sunday Matins has become... oppressive. While the spirit is willing, the physical manifestation of our collective devotion has taken on a certain "gaseous" quality.</p>
+            
+            <div class="audio-container">
+                <p style="font-size: 0.9rem; margin-bottom: 15px;"><em>Listen to the recorded evidence:</em></p>
+                <button class="play-button" onclick="playSermon()">Commence Audio</button>
+            </div>
+
+            <p>We must strive for a more dignified silence in the pews. If the organ is not playing, one should ideally not be providing a woodwind accompaniment from the third row.</p>
+        </div>
+
+        <div class="footer-note">
+            Dictated but not read. <br>
+            — Rev. B. Bassette (B.A., failed).
+        </div>
+    </article>
+
+    <script>
+        function playSermon() {
+            // This is where your fart audio logic lives
+            const farts = ['fart1.mp3', 'fart2.mp3', 'fart3.mp3'];
+            const randomFart = farts[Math.floor(Math.random() * farts.length)];
+            const audio = new Audio('/audio/' + randomFart);
+            audio.play();
+        }
+    </script>
+
+</body>
+</html>

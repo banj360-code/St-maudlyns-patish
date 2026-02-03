@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Untouchables | St. Maudlyns</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Special+Elite&display=swap" rel="stylesheet">
+    <style>
+        body { 
+            background-color: #f4f1ea; 
+            color: #1a0f0d; 
+            font-family: 'Crimson Text', serif; 
+            margin: 0; padding: 40px 20px;
+            line-height: 1.8;
+            font-size: 1.15rem;
+            display: flex; justify-content: center;
+        }
+        .sermon-sheet { 
+            width: 100%; max-width: 750px; 
+            background: #fff;
+            padding: 60px; 
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            border: 1px solid #dcdcdc;
+            position: relative;
+        }
+        
+        /* "Stained" paper effect */
+        .sermon-sheet::before {
+            content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background-image: radial-gradient(rgba(139, 69, 19, 0.05) 10%, transparent 10%);
+            background-size: 30px 30px;
+            pointer-events: none;
+        }
+
+        header { text-align: center; border-bottom: 4px double #1a0f0d; margin-bottom: 50px; padding-bottom: 30px; }
+        h1 { 
+            font-family: 'Cinzel', serif; font-size: 2.8rem; margin: 0 0 10px 0; 
+            text-transform: uppercase; letter-spacing: 2px; color: #1a0f0d;
+        }
+        .subtitle { font-family: 'Special Elite', monospace; font-size: 1.1rem; color: #8b0000; display: block; margin-top: 10px; }
+        .meta { font-style: italic; color: #666; font-size: 0.9rem; margin-top: 20px; display: block; }
+
+        /* Audio Pulpit */
+        .audio-pulpit {
+            background: #1a0f0d; padding: 25px; border-radius: 4px;
+            color: #f4f1ea; margin-bottom: 50px; text-align: center;
+            border: 2px solid #b5a642; position: relative; z-index: 2;
+        }
+        .audio-label { font-family: 'Cinzel', serif; font-size: 0.9rem; letter-spacing: 2px; margin-bottom: 10px; display: block; color: #b5a642; }
+        audio { width: 100%; height: 35px; filter: invert(1); }
+
+        /* Typography */
+        h2 { 
+            font-family: 'Cinzel', serif; font-size: 1.6rem; 
+            margin-top: 60px; margin-bottom: 20px; 
+            border-bottom: 1px solid #b5a642; display: inline-block;
+        }
+        h3 { 
+            font-family: 'Special Elite', monospace; font-size: 1.2rem; 
+            color: #8b0000; margin-top: 30px; text-transform: uppercase; 
+        }
+        
+        .drop-cap {
+            float: left; font-size: 4.8rem; line-height: 0.8; 
+            padding-right: 15px; padding-top: 4px; 
+            font-family: 'Cinzel', serif; color: #1a0f0d;
+        }
+
+        .prologue { background: #f9f9f9; padding: 30px; margin-bottom: 40px; border-left: 3px solid #666; font-style: italic; }
+        .timestamp { font-family: 'Special Elite', monospace; font-size: 0.9rem; color: #666; display: block; margin-bottom: 20px; }
+
+        blockquote { 
+            border-left: 4px solid #8b0000; margin: 30px 0; padding-left: 25px; 
+            font-size: 1.25rem; font-family: 'Cinzel', serif; color: #333; 
+        }
+
+        .back-link { 
+            display: block; text-align: center; margin-top: 80px; 
+            font-family: 'Cinzel', serif; font-size: 0.9rem; 
+            text-decoration: none; color: #666; border-top: 1px solid #ccc; padding-top: 30px; 
+        }
+        .back-link:hover { color: #8b0000; }
+    </style>
+</head>
+<body>
+
+    <article class="sermon-sheet">
+        <header>
+            <h1>The Untouchables</h1>
+            <span class="subtitle">The End of the Age of Accountability</span>
+            <span class="meta">A Manuscript found in West Oxfordshire, 2025</span>
+        </header>
+
+        <div class="audio-pulpit">
+            <span class="audio-label">🔊 Hear the Testimony</span>
+            <audio controls>
+                <source src="recordings/untouchables.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </div>
+
+        <div class="prologue">
+            <span class="timestamp">PROLOGUE: THE VIEW FROM THE EDGE<br>West Oxfordshire, December 26, 2025</span>
+            <p>
+                <span class="drop-cap">T</span>he rain here is different. In the city, rain is just something that wets the pavement. Here, on the edge of the Cotswolds, you can hear it working. You can hear it soaking into the fields, feeding the streams, and hammering against the slate roof of the farmhouse.
+            </p>
+            <p>
+                I was watching the digital archive of the US Department of Justice. I was refreshing the page for File EFTA-000468... At 11:42 AM, the screen flickered. The file didn't turn red; it simply turned white.
+            </p>
+            <p><strong>"ERROR 404: FILE NOT FOUND."</strong></p>
+            <p>
+                The men deleting the files in Washington weren't just rewriting the past. They were clearing the path for the future. The file was just the beginning. The silence is the end.
+            </p>
+        </div>
+
+        <h2>Part I: The Machine</h2>
+        
+        <h3>The Moral Vacuum</h3>
+        <p>To understand how a democracy collapses, you don't need to read the Federalist Papers. You just need to read a lawsuit filed by a handbag salesman.</p>
+        <p>In 2017, Melania Trump’s lawyers put a number on her lost "branding" opportunity: <strong>$150 million.</strong> It was the Rosetta Stone. They weren't politicians who were secretly corrupt. They were merchants who had acquired a government.</p>
+
+        <h3>The Haystack Defense</h3>
+        <p>They didn't burn the books. They just flooded the library. The DOJ dumping a million Epstein documents on Christmas Eve wasn't transparency; it was camouflage.</p>
+
+        <blockquote>
+            "They didn't just beat the rap. They bought the courthouse."
+        </blockquote>
+
+        <h3>The Blueprint (Project 2025)</h3>
+        <p>It was a 920-page "Mandate for Leadership." It wasn't a policy paper; it was a demolition order. Using "Schedule F," they fired the "Referee"—the scientist monitoring the melting Arctic ice—and replaced him with a loyalist.</p>
+
+        <h2>Part II: The Victims</h2>
+
+        <h3>The Heir (JD Vance)</h3>
+        <p>The real danger isn't the old man yelling at traffic. It’s the quiet young man taking notes. Vance believed Democracy failed because it gave people too much freedom. Trump was the storm. Vance was the climate change.</p>
+
+        <h3>The Earth</h3>
+        <p>They didn't fix the climate. They fired the thermometer. The deal was struck at a dinner in Florida: $1 Billion from Oil CEOs in exchange for the dismantling of NOAA.</p>
+
+        <h2>Part III: The Response</h2>
+
+        <h3>The Archipelago</h3>
+        <p>The Resistance didn't begin with a march. It began with a projection on Windsor Castle. The "Blue Wall" states decoupled. The "Tufton Pipeline" was exposed. The UK finally pivoted to Europe.</p>
+        
+        <div class="prologue" style="border-left-color: #8b0000; background: #fff;">
+            <span class="timestamp">EPILOGUE: THE HEIR APPARENT<br>January 19, 2029</span>
+            <p>The "Old Man" is gone. But the man waiting to take the oath is JD Vance. He isn't there to break the system. He is there to inherit it.</p>
+            <p>They have the money. They have the algorithm. They have the guns.</p>
+            <p>All we have is the memory. That is why I wrote this down.</p>
+            <p>The rain is hammering against the glass. The water is rising. But the lamp is still on.</p>
+        </div>
+
+        <a href="/sermons/" class="back-link">← Return to the Pulpit Ledger</a>
+    </article>
+
+</body>
+</html>
