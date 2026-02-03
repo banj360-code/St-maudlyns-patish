@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Pulpit | St. Maudlyns-le-Wold</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        /* --- LIGHT MODE (Default) --- */
+        body { 
+            background-color: #f4f1ea; 
+            color: #1a0f0d; 
+            font-family: 'Old Standard TT', serif; 
+            margin: 0; padding: 40px 20px;
+            display: flex; justify-content: center;
+            background-image: linear-gradient(#e5e0d0 1px, transparent 1px);
+            background-size: 100% 30px; /* Notebook paper lines */
+        }
+        .tract-container { 
+            width: 100%; max-width: 650px; 
+            background: #fff;
+            padding: 50px; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border: 1px solid #dcdcdc;
+            position: relative;
+        }
+        /* A "pinned paper" effect */
+        .tract-container::before {
+            content: ""; position: absolute; top: -15px; left: 50%; transform: translateX(-50%);
+            width: 150px; height: 30px; background: rgba(200, 50, 50, 0.2); 
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Visual 'tape' or pin */
+        }
+
+        header { text-align: center; margin-bottom: 30px; border-bottom: 2px solid #1a0f0d; padding-bottom: 20px; }
+        h1 { 
+            font-family: 'Cinzel', serif; font-size: 2.2rem; margin: 0; 
+            text-transform: uppercase; letter-spacing: 3px; 
+        }
+        .subtitle { font-style: italic; color: #555; margin-top: 10px; font-size: 0.9rem; }
+
+        /* THE VICAR PORTRAIT FRAME */
+        .vicar-frame {
+            width: 180px; 
+            height: 240px;
+            margin: 0 auto 50px auto; /* Centered with spacing below */
+            position: relative;
+            background: #1a0f0d;
+            border-radius: 50%; /* Makes it an oval */
+            box-shadow: 
+                0 10px 20px rgba(0,0,0,0.3), 
+                0 0 0 5px #1a0f0d, /* Inner dark rim */
+                0 0 0 8px #b5a642; /* Outer gold rim */
+            overflow: hidden;
+        }
+
+        .vicar-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            /* Sepia tone to age him slightly */
+            filter: sepia(0.2) contrast(1.1); 
+        }
+
+        /* TRACT ENTRIES */
+        .tract-entry { margin-bottom: 40px; }
+        .tract-title { 
+            display: block; font-size: 1.4rem; font-weight: bold; 
+            color: #1a0f0d; text-decoration: none; margin-bottom: 5px;
+            transition: color 0.2s;
+        }
+        .tract-title:hover { color: #8b0000; text-decoration: underline; }
+        
+        .tract-meta { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; color: #666; margin-bottom: 10px; display: block; }
+        .tract-excerpt { font-size: 1rem; line-height: 1.6; color: #333; }
+
+        .back-link { 
+            display: block; text-align: center; margin-top: 50px; 
+            color: #666; text-decoration: none; font-size: 0.8rem; border-top: 1px solid #ccc; padding-top: 20px;
+        }
+        .back-link:hover { color: #000; }
+
+        /* --- DARK MODE OVERRIDE --- */
+        @media (prefers-color-scheme: dark) {
+            body { 
+                background-color: #100a09; /* Obsidian background */
+                color: #d4ccb8; 
+                background-image: linear-gradient(#2a1f1d 1px, transparent 1px);
+            }
+            .tract-container { 
+                background: #1a0f0d; 
+                border-color: #3d2b25;
+                box-shadow: 0 10px 40px rgba(0,0,0,1);
+            }
+            .tract-container::before {
+                background: rgba(139, 0, 0, 0.4); 
+                box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+            }
+
+            /* Dark Mode Vicar Frame - Sinister Red Rim */
+            .vicar-frame {
+                box-shadow: 
+                    0 10px 30px rgba(0,0,0,0.8),
+                    0 0 0 5px #000, 
+                    0 0 0 8px #8b0000; 
+            }
+            .vicar-image {
+                opacity: 0.9;
+                filter: sepia(0.5) contrast(1.2) grayscale(0.2);
+            }
+
+            /* Typography */
+            h1, .tract-title { color: #b5a642; /* Dull Gold */ }
+            .tract-title:hover { color: #d4a017; text-decoration-color: #d4a017; }
+            
+            .subtitle, .tract-meta { color: #888; }
+            .tract-excerpt { color: #c0b8a0; }
+
+            header { border-bottom-color: #b5a642; }
+            
+            /* Back Link */
+            .back-link { 
+                color: #666; 
+                border-top-color: #3d2b25; 
+            }
+            .back-link:hover { color: #b5a642; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="tract-container">
+        <header>
+            <h1>The Pulpit</h1>
+            <div class="subtitle">Dialogues, Manifestos, and Warnings regarding the Modern Age.</div>
+        </header>
+
+        <div class="vicar-frame">
+            <img src="vicar.png" alt="The Reverend in full flow" class="vicar-image">
+        </div>
+
+        <div class="tract-entry">
+            <span class="tract-meta">The Major Epistle • West Oxfordshire Manuscript</span>
+            <a href="the-untouchables.html" class="tract-title">The Untouchables</a>
+            <p class="tract-excerpt">
+                "ERROR 404: FILE NOT FOUND." A comprehensive indictment of the moral vacuum, the Haystack Defense, and the silent annexation of reality. 
+            </p>
+        </div>
+
+        <div class="tract-entry">
+            <span class="tract-meta">Epistle I • The Nature of Order</span>
+            <a href="low-entropy-citizen.html" class="tract-title">The Low Entropy Citizen</a>
+            <p class="tract-excerpt">
+                A reflection on maintaining internal coherence in a high-disorder universe. Why the quiet life is an act of rebellion.
+            </p>
+        </div>
+
+        <div class="tract-entry">
+            <span class="tract-meta">Epistle II • A Call to Arms</span>
+            <a href="emergent-manifesto.html" class="tract-title">The Emergent Manifesto</a>
+            <p class="tract-excerpt">
+                We are not building a machine; we are growing a garden. The principles of parish life as a counter-structure to the digital void.
+            </p>
+        </div>
+
+        <div class="tract-entry">
+            <span class="tract-meta">Epistle III • Economic Sanctions</span>
+            <a href="boycott-american-goods.html" class="tract-title">On the Boycott of American Goods</a>
+            <p class="tract-excerpt">
+                A sermon regarding the importation of plastic, noise, and high-fructose spiritualism. Why we must return to local industry.
+            </p>
+        </div>
+
+        <a href="/" class="back-link">← Return to the Lychgate</a>
+    </div>
+
+</body>
+</html>
