@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>St. Maudlyns-le-Wold Ledger</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Crimson+Text:ital,wght@1,600&family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            background-color: #1a0f0d;
+            font-family: 'Old Standard TT', serif;
+            overflow: hidden;
+            perspective: 1000px; /* Essential for the 3D effect */
+        }
+
+        /* The Hero Image */
+        .background-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('/church-image.png') no-repeat center center;
+            background-size: cover;
+            z-index: 1;
+        }
+
+        /* Vignette for depth */
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 50%, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.7) 100%);
+            z-index: 2;
+        }
+
+        header {
+            position: absolute;
+            top: 40px;
+            width: 100%;
+            text-align: center;
+            z-index: 10;
+            pointer-events: none; /* Lets you click through header if needed */
+        }
+
+        h1 {
+            color: #fdfaf0;
+            font-family: 'Cinzel', serif;
+            font-size: 3.5rem;
+            letter-spacing: 4px;
+            text-shadow: 0 5px 15px rgba(0,0,0,0.9);
+            margin: 0;
+        }
+
+        /* --- THE 3D ORGAN CONSOLE NAVIGATION --- */
+        .stops-menu {
+            position: absolute;
+            left: 50px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 35px; /* Spaced out for the 'rods' to show */
+            z-index: 20;
+            padding-left: 20px; /* Space for the pull-out effect */
+        }
+
+        /* THE STOP CONTAINER */
+        .organ-stop {
+            position: relative;
+            width: 90px;
+            height: 90px;
+            text-decoration: none;
+            cursor: pointer;
+            /* No overflow:hidden, or the shadow gets cut off */
+            transform-style: preserve-3d;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* THE ROD (Hidden neck that appears on hover) */
+        .stop-rod {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) translateZ(-20px);
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(90deg, #2a1f1d, #555, #2a1f1d); /* Cylindrical look */
+            border-radius: 50%;
+            z-index: -1; /* Behind the face */
+            transition: width 0.3s ease-out;
+            box-shadow: inset 0 0 10px #000;
+        }
+
+        /* THE FACE (Porcelain Knob) */
+        .stop-face {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 30% 30%, #fffbf0, #e0d8c0);
+            border-radius: 50%;
+            border: 4px solid #1a0f0d; /* Dark Iron Rim */
+            box-shadow: 
+                0 10px 20px rgba(0,0,0,0.6), /* Deep Drop Shadow */
+                inset 0 0 15px rgba(255,255,255,0.9); /* Porcelain Shine */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Bouncy Spring */
+        }
+
+        /* TEXT STYLING */
+        .stop-label {
+            font-family: 'Cinzel', serif;
+            color: #1a0f0d;
+            font-weight: 700;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            line-height: 1;
+            text-align: center;
+        }
+
+        .stop-footage {
+            font-family: 'Crimson Text', serif;
+            font-style: italic;
+            font-weight: 600;
+            color: #8b0000; /* Crimson Ink */
+            font-size: 0.8rem;
+            margin-top: 4px;
+        }
+
+        /* --- ANIMATION STATES --- */
+
+        /* HOVER: Pull the stop OUT towards the user */
+        .organ-stop:hover .stop-face {
+            transform: translateX(15px) scale(1.1); /* Moves Right and Gets Bigger */
+            background: radial-gradient(circle at 30% 30%, #ffffff, #ece4d0);
+        }
+
+        /* HOVER: Extend the rod to connect it */
+        .organ-stop:hover .stop-rod {
+            width: 80px; /* Extends rightward */
+        }
+      
