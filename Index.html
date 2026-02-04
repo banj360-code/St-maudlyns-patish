@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>St. Maudlyns-le-Wold | The Lychgate</title>
+    <style>
+        body, html {
+            margin: 0; padding: 0; width: 100%; height: 100%;
+            background: #050505 url('church-image.png') no-repeat center center fixed;
+            background-size: cover; font-family: 'Times New Roman', serif; color: #e0e0e0; overflow: hidden;
+        }
+
+        .overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.4); pointer-events: none; }
+
+        /* The Console: Adjusted gap for 7 stops */
+        .console-nav {
+            position: fixed; left: 80px; top: 55%; transform: translateY(-50%);
+            perspective: 1200px; display: flex; flex-direction: column; gap: 20px; z-index: 10;
+        }
+
+        .stop-link { text-decoration: none; display: block; }
+
+        .stop-container {
+            position: relative; transform: rotateY(30deg); transform-style: preserve-3d;
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .stop-stalk {
+            position: absolute; top: 50%; left: 0; width: 0; height: 6px;
+            background: linear-gradient(to bottom, #2c2c2c, #000, #2c2c2c);
+            transform: translateY(-50%) translateZ(-10px); transition: width 0.4s ease-out;
+        }
+
+        .stop-knob {
+            background: radial-gradient(circle at 30% 30%, #fdfdfd 0%, #a1a1a1 60%, #4d4d4d 100%);
+            color: #1a1a1a; padding: 10px 22px; border-radius: 40px; border: 2px solid #222;
+            font-weight: bold; text-transform: uppercase; letter-spacing: 1px;
+            box-shadow: 10px 10px 20px rgba(0,0,0,0.8); text-align: center; min-width: 150px;
+            font-size: 0.85rem;
+        }
+
+        .stop-link:hover .stop-container { transform: rotateY(25deg) translateZ(60px); }
+        .stop-link:hover .stop-stalk { width: 60px; left: -60px; }
+
+        .header-title { position: absolute; top: 40px; right: 60px; text-align: right; }
+        h1 { font-style: italic; font-weight: 100; margin: 0; font-size: 2.5rem; text-shadow: 2px 2px 10px #000; }
+        p.subtitle { margin: 0; color: #888; letter-spacing: 3px; font-size: 0.9rem; }
+    </style>
+</head>
+<body>
+    <div class="overlay"></div>
+    
+    <header class="header-title">
+        <h1>St. Maudlyns-le-Wold</h1>
+        <p class="subtitle">THE COCKPIT OF THE SOUL</p>
+    </header>
+
+    <nav class="console-nav">
+        <a href="sermons/index.html" class="stop-link">
+            <div class="stop-container"><div class="stop-stalk"></div><div class="stop-knob">The Pulpit</div></div>
+        </a>
+        <a href="sermons/school-of-entropy.html" class="stop-link">
+            <div class="stop-container"><div class="stop-stalk"></div><div class="stop-knob">School of Entropy</div></div>
+        </a>
+        <a href="noticeboard.html" class="stop-link">
+            <div class="stop-container"><div class="stop-stalk"></div><div class="stop-knob">Noticeboard</div></div>
+        </a>
+        <a href="sermons/certificate.html" class="stop-link">
+            <div class="stop-container"><div class="stop-stalk"></div><div class="stop-knob">Indulgences</div></div>
+        </a>
+        <a href="#" class="stop-link">
+            <div class="stop-container"><div class="stop-stalk"></div><div class="stop-knob">The Vestry</div></div>
+        </a>
+        <a href="#" class="stop-link">
+            <div class="stop-container"><div class="stop-stalk"></div><div class="stop-knob">The Crypt</div></div>
+        </a>
+        <a href="#" class="stop-link">
+            <div class="stop-container"><div class="stop-stalk"></div><div class="stop-knob">Alms Box</div></div>
+        </a>
+    </nav>
+</body>
+</html>
